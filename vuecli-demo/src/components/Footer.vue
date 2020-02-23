@@ -6,10 +6,19 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-         Copyright:"Copyright 2020 Vue Demo"
+    props:{
+        Copyright:{
+            type:String,
+            require:true
         }
+    },
+    data() {
+        return{
+
+        }
+    },
+    methods: {
+        
     },
 }
 </script>

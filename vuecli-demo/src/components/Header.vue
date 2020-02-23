@@ -1,13 +1,24 @@
 <template>
-    <div class="header">
+    <div class="header"  @click="changeTitle">
            <h1 class="title">{{title}}</h1>
     </div>
 </template>
 <script>
 export default {
+    props:{
+        title:{
+            type:String,
+            require:true
+        }
+    },
     data() {
-        return {
-               title:"一个标题"
+      return{
+
+      }
+    },
+    methods: {
+        changeTitle(){
+            this.$emit("changeTitle","new title");
         }
     },
 }
