@@ -1,27 +1,30 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+//二.配置路由相关信息
+//导入vue,vue-router以及使用到的插件
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../components/Home.vue";
+import About from "../components/About.vue";
 
-Vue.use(VueRouter)
+//1.通过Vue.use(插件),安装插件
+Vue.use(VueRouter);
 
+//3.将routers数组传入router对象
 const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/home",
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: "/about",
+    component: About
   }
-]
+];
 
+//2.创建vue-router对象
 const router = new VueRouter({
+  //配置路由和组件之间的映射关系
   routes
-})
+});
 
-export default router
+//4.将定义好的vue-router对象导出
+export default router;
