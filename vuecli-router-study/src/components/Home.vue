@@ -1,4 +1,4 @@
-// 创建vue-router组件
+// 一.创建vue-router组件
 <template>
   <div class="home">
     <h2>我是首页</h2>
