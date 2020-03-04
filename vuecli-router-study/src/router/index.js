@@ -4,13 +4,21 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../components/Home.vue";
 import About from "../components/About.vue";
+import User from "../components/User.vue";
+
+
+
 
 //1.通过Vue.use(插件),安装插件
 Vue.use(VueRouter);
 
 //3.将routers数组传入router对象
 const routes = [
-
+  {
+    path: '',
+    //redirect重定向
+    redirect:'/home'
+  },
   {
     path: "/home",
     component: Home
@@ -18,6 +26,10 @@ const routes = [
   {
     path: "/about",
     component: About
+  },
+  {
+    path: '/user/:userId',
+    component:User
   }
 ];
 
