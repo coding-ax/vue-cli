@@ -10,6 +10,7 @@ Vue.use(VueRouter);
 
 //3.将routers数组传入router对象
 const routes = [
+
   {
     path: "/home",
     component: Home
@@ -23,7 +24,9 @@ const routes = [
 //2.创建vue-router对象
 const router = new VueRouter({
   //配置路由和组件之间的映射关系
-  routes
+  routes,
+  mode: 'history',
+  linkActiveClass:'active'
 });
 
 //4.将定义好的vue-router对象导出
