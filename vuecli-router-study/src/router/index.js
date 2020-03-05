@@ -2,14 +2,17 @@
 //导入vue,vue-router以及使用到的插件
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../components/Home.vue";
-import About from "../components/About.vue";
-import User from "../components/User.vue";
+// import Home from "../components/Home.vue";
+// import About from "../components/About.vue";
+// import User from "../components/User.vue";
 
-
-
-
+//懒加载：
+const Home = () => import('../components/Home.vue');
+const About = () => import('../components/About.vue');
+const User= () => import('../components/User.vue');
+const Profile=()=>import('../components/Profile.vue')
 //1.通过Vue.use(插件),安装插件
+
 Vue.use(VueRouter);
 
 //3.将routers数组传入router对象
@@ -21,7 +24,21 @@ const routes = [
   },
   {
     path: "/home",
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '',
+        redirect:'news'
+      },
+      {
+        path: "news",
+        component:()=>import('../components/HomeNews.vue')
+      },
+      {
+        path: "messages",
+        component:()=>import('../components/HomeMessage.vue')
+      }
+    ]
   },
   {
     path: "/about",
@@ -30,6 +47,10 @@ const routes = [
   {
     path: '/user/:userId',
     component:User
+  },
+  {
+    path: '/profile',
+    component:Profile
   }
 ];
 

@@ -10,7 +10,7 @@ export default {
     name:'User',
     computed: {
         userId(){
-            //router总体路由对象,route当前活跃路由 $route.param 可以拿到其数据
+            //router总体路由对象,route当前活跃路由 $route.params 可以拿到其数据
             return this.$route.params.userId
         }
     },
