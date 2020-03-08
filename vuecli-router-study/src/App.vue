@@ -22,8 +22,10 @@
         <router-link :to="'/user/'+userId" tag="button">用户</router-link>
         <!-- <router-link :to="{path:'/profile',query:{name:'AX',age:18}}" tag='button'>档案</router-link> -->
         <button @click="profileClick">点我</button>
-        <router-view></router-view>
         
+        <keep-alive exclude="Profile,User">
+        <router-view></router-view>
+        </keep-alive>
       </div>
     
   </div>
@@ -54,8 +56,9 @@ export default {
           age:18
         }
       });
-      // console.log(this.$router);
-      
+      //所有的组件都继承vue类的原型
+      // console.log(this.$router);//全局路由
+      // console.log(this.$route);//当前活跃路由
     },
     // aboutClick() {
     //   // this.$router.push('/about');

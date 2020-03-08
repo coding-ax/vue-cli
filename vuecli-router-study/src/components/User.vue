@@ -14,6 +14,10 @@ export default {
             return this.$route.params.userId
         }
     },
+//     created() {
+//     console.log('created');
+//     document.title="用户";
+//   },
 }
 </script>
 <style scoped>

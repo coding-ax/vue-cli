@@ -9,6 +9,9 @@
 <script>
 export default {
   name:'About',
+  // created() {
+  //   document.title="关于"
+  // },
 }
 </script>
 

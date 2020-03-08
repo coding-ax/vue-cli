@@ -7,6 +7,7 @@
             <li>消息4</li>
             <li>消息5</li>
         </ul>
+        <input type="text" placeholder="please say somethings here">
     </div>
 </template>
 
