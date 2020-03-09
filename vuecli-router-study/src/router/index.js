@@ -54,7 +54,7 @@ const routes = [
       title:"关于"
     },
     beforeEnter: (to, from, next) => {
-      console.log('About beforeEnter');
+      // console.log('About beforeEnter');
       next()
     }
   },
