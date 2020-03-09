@@ -1,21 +1,20 @@
 <template>
-  <tab-bar-item id="app">
-    <tab-bar>
-      <tab-bar-item></tab-bar-item>
-      <tab-bar-item></tab-bar-item>
-      <tab-bar-item></tab-bar-item>
-      <tab-bar-item></tab-bar-item>
-    </tab-bar>
-  </tab-bar-item>
+  <div id="app">
+    <main-tab-bar></main-tab-bar>
+  </div>
 </template>
 <script>
-import TabBar from "./components/tabbar/TabBar";
-import TabBarItem from "./components/tabbar/TabBarItem";
+
+import MainTabBar from './components/tabbar/MainTabBar';
 export default {
   components: {
     TabBar,
-    TabBarItem
-  }
+    TabBarItem,
+    MainTabBar
+  },
+  methods: {
+    
+  },
 };
 </script>
 <style>
