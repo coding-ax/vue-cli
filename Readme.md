@@ -6,7 +6,8 @@
 3.vue-cli 4逐渐上手
 3.vue-router学习
 4.对ES6中的Promise的用法有了了解
-5.vuex正在学习中
+5.vuex学习完毕
+6.axios有过接触
 - 正在进行的学习：
 1.视频：bilibili：2019年最全最新Vue、Vuejs教程，从入门到精通 
 - 预设学习路径：

@@ -58,18 +58,20 @@ export default new Vuex.Store({
   },
   modules: {
     //划分模块
+    //模块最终被放入了state,
+    //取得方式：$store.state.a
+    //再次拿模块a中的state的数据时，不需要在加state，如：$store.state.a.name
+    //模块只是便于查看，本质上还是同一作用域，所以commit调用无差别且mutatinos内部名字不能重复
+
     a: {
       state: {
-        
+        name: "ax"
       },
       mutations: {
-        
       },
-      actions: {
-        
-      },
+      actions: {},
       getters: {
-        
+        //模块中可以用第三个参数rootState
       }
     }
   },
