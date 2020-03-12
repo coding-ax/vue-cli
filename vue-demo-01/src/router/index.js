@@ -2,7 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 const Home = () => import('../views/Home.vue');
-const AvatorInfo=()=> import('../views/AvatorInfo.vue');
+const AvatorInfo = () => import('../views/AvatorInfo.vue');
+const TodoList = () => import('../views/TodoList.vue');
 Vue.use(VueRouter);
 
 const routes = [
@@ -17,6 +18,10 @@ const routes = [
   {
     path: '/info',
     component:AvatorInfo
+  },
+  {
+    path: '/todo',
+    component:TodoList
   }
 ];
 

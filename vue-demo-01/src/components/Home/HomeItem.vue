@@ -2,7 +2,7 @@
   <div id="home-item">
     <div class="three-item">
       <div class="home-item-item">
-        <img src="../../assets/Head/biaodan.svg" alt />
+        <img src="../../assets/Head/biaodan.svg" @click="routerChange('/todo')" alt />
         <span>备忘录</span>
       </div>
       <div class="home-item-item">
@@ -46,7 +46,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    routerChange(path){
+      this.$router.replace(path);
+    }
+  }
+};
 </script>
 
 <style>

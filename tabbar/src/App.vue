@@ -8,8 +8,8 @@
 import MainTabBar from './components/tabbar/MainTabBar';
 export default {
   components: {
-    TabBar,
-    TabBarItem,
+    // TabBar,
+    // TabBarItem,
     MainTabBar
   },
   methods: {

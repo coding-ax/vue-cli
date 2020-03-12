@@ -91,6 +91,7 @@ export default {
   left: 0;
   right: 0;
   top: 0;
+  
 }
 .home-header-item {
   font-size: 20px;
