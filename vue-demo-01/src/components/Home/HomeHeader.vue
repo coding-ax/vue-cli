@@ -1,9 +1,15 @@
 <template>
   <div id="home-header">
     <div class="home-header-box">
-      <div class="home-header-item" @click="menuClick">菜单</div>
-      <div class="home-header-item">首页</div>
-      <div class="home-header-item" @click="aboutClick">关于</div>
+      <div class="home-header-item" @click="menuClick">
+          <img src="../../assets/Head/xitong-.svg" alt="">
+      </div>
+      <div class="home-header-item" @click="routeBack">
+          <img src="../../assets/Head/shouye.svg" alt="">
+      </div>
+      <div class="home-header-item" @click="aboutClick">
+          <img src="../../assets/Head/fenxiang.svg" alt="">
+      </div>
     </div>
     <div class="home-header-about" v-show="leftStatus">
       <div class="home-header-about-item">
@@ -11,14 +17,40 @@
         <hr />
       </div>
     </div>
+    <div  @click="aboutClick" class="home-header-about-box" v-show="leftStatus"></div>
     <div @click.self="menuClick" :class="{'home-left-box':rightStatus}"></div>
     <transition name="home-left-box-item">
       <div v-show="rightStatus" class="home-left-box-item">
           <div class="home-left-box-item-title">
               我是你的贴身小管家
           </div>
-          <div  class="home-left-box-item-items">
           
+          <div class="home-left-box-item-items">
+              <img src="../../assets/Head/banana.svg" alt=""><span>首页</span>
+          </div>
+          
+          <div class="home-left-box-item-items">
+              <img src="../../assets/Head/banana.svg" alt=""><span>首页</span>
+          </div>
+          
+          <div class="home-left-box-item-items">
+              <img src="../../assets/Head/banana.svg" alt=""><span>首页</span>
+          </div>
+          
+          <div class="home-left-box-item-items">
+              <img src="../../assets/Head/banana.svg" alt=""><span>首页</span>
+          </div>
+          
+          <div class="home-left-box-item-items">
+              <img src="../../assets/Head/banana.svg" alt=""><span>首页</span>
+          </div>
+          
+          <div class="home-left-box-item-items">
+              <img src="../../assets/Head/banana.svg" alt=""><span>首页</span>
+          </div>
+          
+          <div class="home-left-box-item-items">
+              <img src="../../assets/Head/banana.svg" alt=""><span>首页</span>
           </div>
       </div>
     </transition>
@@ -39,6 +71,9 @@ export default {
     },
     aboutClick(){
         this.leftStatus=!this.leftStatus;
+    },
+    routeBack(){
+      this.$router.replace('/home') 
     }
   }
 };
@@ -63,29 +98,25 @@ export default {
   color: white;
   cursor: pointer;
 }
+.home-header-item img{
+    width: 30px;
+    height: 30px;
+}
 .home-left-box {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 100%;
+  right: 0;
 }
-.home-left-box-item {
-  background: rgb(44, 59, 65);
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 170px;
-  /* animation: showRightBox 0.3s forwards; */
-}
+
 
 .home-left-box-item-enter-active {
   animation: forwards showRightBox 0.3s;
 }
 .home-left-box-item-leave-active {
-  animation: forwards showRightBox 0.3s reverse;
+  animation: forwards showRightBox 0.2s reverse;
 }
 
 .home-header-about {
@@ -98,6 +129,51 @@ export default {
 }
 .home-header-about-item{
     color: white;
+}
+.home-header-about-box{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.home-left-box-item {
+  background: rgb(44, 59, 65);
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  /* align-self: center; */
+   color: white;
+  /* animation: showRightBox 0.3s forwards; */
+}
+.home-left-box-item-title{
+    overflow: hidden;
+    height: 20px;
+    margin-top:50px ;
+    margin-left:10px ;
+}
+.home-left-box-item-items{
+    display: flex;
+    flex-direction: row;
+     align-self: center;
+     justify-content: center;
+    margin:5px ;
+    width: 100%;
+    height: 30px;
+     overflow: hidden;
+    display: inline-block;
+     margin-left:22px ;
+}
+.home-left-box-item-items img{
+    
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
 }
 @keyframes showRightBox {
   0% {

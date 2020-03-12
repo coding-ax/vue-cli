@@ -1,13 +1,28 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+const Home = () => import('../views/Home.vue');
+const AvatorInfo=()=> import('../views/AvatorInfo.vue');
+Vue.use(VueRouter);
 
 const routes = [
-]
+  {
+    path: "",
+    redirect: "/home"
+  },
+  {
+    path: '/home',
+    component:Home
+  },
+  {
+    path: '/info',
+    component:AvatorInfo
+  }
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+  mode:"history"
+});
 
-export default router
+export default router;
