@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 const Home = () => import('../views/Home.vue');
 const AvatorInfo = () => import('../views/AvatorInfo.vue');
 const TodoList = () => import('../views/TodoList.vue');
+const Choice = () => import('../views/Choice.vue');
 Vue.use(VueRouter);
 
 const routes = [
@@ -22,6 +23,10 @@ const routes = [
   {
     path: '/todo',
     component:TodoList
+  },
+  {
+    path: '/choice',
+    component:Choice
   }
 ];
 

@@ -7,11 +7,11 @@
       </div>
       <div class="home-item-item">
         <img src="../../assets/Head/biaodan.svg" alt />
-        <span>备忘录</span>
+        <span>处处听</span>
       </div>
       <div class="home-item-item">
-        <img src="../../assets/Head/biaodan.svg" alt />
-        <span>备忘录</span>
+        <img src="../../assets/Head/biaodan.svg" @click="routerChange('/choice')" alt />
+        <span>选择困难</span>
       </div>
     </div>
     <div class="three-item">

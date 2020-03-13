@@ -5,7 +5,7 @@
 
 
       <div class="input-area">
-        <input type="text" v-model="currentString" placeholder="请输入待办事项" />
+        <input type="text" v-model="currentString"  @keydown.enter="clickAdd" placeholder="请输入待办事项" />
         <span class="input-submit" @click="clickAdd">+</span>
       </div>
 
@@ -20,7 +20,7 @@
         </ul>
 
 
-  
+
 
         <div class="TodoList-item">
           <p class="TodoList-title">DONELIST</p>
