@@ -9,7 +9,7 @@
      <transition name="head-up">
     <div class="head-up" v-show="isLogin">
        <p><span>盼望你能见到心里的月亮</span></p>
-        <p><span>请与岁月共白首</span></p>
+        <p><span>与岁月共白首</span></p>
     </div>
      </transition>
   </div>

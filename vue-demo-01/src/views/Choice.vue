@@ -22,66 +22,104 @@
 </template>
 
 <script>
+//生成从minNum到maxNum的随机数
+function randomNum(minNum, maxNum) {
+  switch (arguments.length) {
+    case 1:
+      return parseInt(Math.random() * minNum + 1, 10);
+      break;
+    case 2:
+      return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
 export default {
   data() {
     return {
       awardArray: [
         {
           id: 1,
-          name: "我有没有",
+          name: "1",
           imgSrc: require("../assets/Head/orange.svg")
         },
         {
           id: 2,
-          name: "少年啊",
+          name: "2",
           imgSrc: require("../assets/Head/orange.svg")
         },
         {
           id: 3,
-          name: "壮志",
+          name: "3",
           imgSrc: require("../assets/Head/orange.svg")
         },
         {
           id: 4,
-          name: "十大",
+          name: "4",
           imgSrc: require("../assets/Head/orange.svg")
         },
         {
           id: 5,
-          name: "十大啊",
+          name: "5",
           imgSrc: require("../assets/Head/orange.svg")
         },
         {
           id: 6,
-          name: "瓦达",
+          name: "6",
           imgSrc: require("../assets/Head/orange.svg")
         },
         {
           id: 7,
-          name: "特点",
+          name: "7",
           imgSrc: require("../assets/Head/orange.svg")
         },
         {
           id: 8,
-          name: "尔特",
+          name: "8",
           imgSrc: require("../assets/Head/orange.svg")
         }
       ],
-      currentIndex: 1
+      currentIndex: 1,
+      speed: 150,
+      target: 0,
+      cicleCount: 6
     };
   },
   methods: {
     playStart() {
-      console.log(this);
+      this.currentIndex = 1;
+      this.speed = 150;
+      this.target = parseInt(Math.random() * 8 + 1, 10);
 
-      console.log(this);
-      setInterval(() => {
-        this.currentIndex++;
-        if (this.currentIndex == 9) {
-          this.currentIndex = 1;
-        }
+      var awartCount = 1;
+      console.log(this.target);
+      //   var that=this;
+      let promise = new Promise(resolve => {
+        var time1 = setInterval(() => {
+          this.currentIndex++;
+          if (this.currentIndex == 9) {
+            this.currentIndex = 1;
+          }
+          if (this.currentIndex == 1) {
+            awartCount++;
+          }
+          if (awartCount >= 3) {
+            this.speed += 100;
+          }
+          if (
+            awartCount == this.cicleCount &&
+            this.currentIndex == this.target
+          ) {
+            resolve(time1);
+          }
+        }, this.speed);
+      }).then(time => {
+        clearInterval(time);
+        this.currentIndex = this.target;
         console.log(this.currentIndex);
-      }, 500);
+      });
     }
   }
 };
@@ -105,94 +143,89 @@ export default {
   color: #f6f6f6;
 }
 .choice-box-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  bottom: 30%;
+  top: 21%;
   margin: 0;
 }
 .choice-small-item1 {
-  width: 32.8%;
-  position: relative;
   border: 1px solid #f6f6f6;
+  position: absolute;
+  left: 0;
+  right: 66.7%;
+  top: 0;
+  bottom: 66.7%;
 }
 .choice-small-item2 {
-  width: 32.8%;
   border: 1px solid #f6f6f6;
+  position: absolute;
+  left: 33.3%;
+  right: 33.3%;
+  top: 0;
+  bottom: 66.7%;
 }
 .choice-small-item3 {
-  border: 0.1px solid #f6f6f6;
-  width: 32.8%;
+  border: 1px solid #f6f6f6;
+  position: absolute;
+  left: 66.7%;
+  right: 0%;
+  top: 0;
+  bottom: 66.7%;
 }
 .choice-small-item4 {
+  position: absolute;
+  left: 66.7%;
+  right: 0;
+  top: 33.3%;
+  bottom: 33.3%;
   border: 1px solid #f6f6f6;
-  width: 32.8%;
-  position: relative;
-  left: 300px;
 }
 .choice-small-item5 {
-  width: 32.8%;
-  position: relative;
   border: 1px solid #f6f6f6;
-  left: 150px;
-  top: 107px;
+  position: absolute;
+  left: 66.7%;
+  right: 0;
+  top: 66.7%;
+  bottom: 0;
 }
 .choice-small-item6 {
-  width: 32.8%;
-  position: relative;
+  position: absolute;
+  left: 33.3%;
+  right: 33.3%;
+  top: 66.7%;
+  bottom: 0;
   border: 1px solid #f6f6f6;
-  left: -150px;
-  top: 106px;
 }
 .choice-small-item7 {
-  width: 32.8%;
-  position: relative;
   border: 1px solid #f6f6f6;
+  position: absolute;
+  left: 0%;
+  right: 66.6%;
+  top: 66.7%;
+  bottom: 0;
 }
 .choice-small-item8 {
-  width: 32.8%;
-  position: relative;
   border: 1px solid #f6f6f6;
-  left: -150px;
-  top: -106px;
+  position: absolute;
+  right: 66.6%;
+  left: 0;
+  top: 33.3%;
+  bottom: 33.3%;
 }
-.choice-small-item1 img {
+.choice-box-content img {
   width: 80px;
   height: 80px;
 }
-.choice-small-item2 img {
-  width: 80px;
-  height: 80px;
-}
-.choice-small-item3 img {
-  width: 80px;
-  height: 80px;
-}
-.choice-small-item4 img {
-  width: 80px;
-  height: 80px;
-}
-.choice-small-item5 img {
-  width: 80px;
-  height: 80px;
-}
-.choice-small-item6 img {
-  width: 80px;
-  height: 80px;
-}
-.choice-small-item7 img {
-  width: 80px;
-  height: 80px;
-}
-.choice-small-item8 img {
-  width: 80px;
-  height: 80px;
-}
+
 .choice-small-begin {
-  width: 32.8%;
-  position: relative;
   border: 1px solid #f6f6f6;
-  top: -107px;
-  left: -150px;
+  position: absolute;
+  right:33.3%;
+  left: 33.3%;
+  top: 33.3%;
+  bottom: 33.3%;
 }
 .choice-small-begin img {
   width: 80px;
