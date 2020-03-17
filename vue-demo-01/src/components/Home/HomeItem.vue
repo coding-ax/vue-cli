@@ -6,8 +6,8 @@
         <span>备忘录</span>
       </div>
       <div class="home-item-item">
-        <img src="../../assets/Head/biaodan.svg" alt />
-        <span>处处听</span>
+        <img src="../../assets/Head/biaodan.svg" @click="routerChange('/calc')" alt />
+        <span>计算器</span>
       </div>
       <div class="home-item-item">
         <img src="../../assets/Head/biaodan.svg" @click="routerChange('/choice')" alt />

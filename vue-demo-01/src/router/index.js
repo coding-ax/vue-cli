@@ -5,6 +5,7 @@ const Home = () => import('../views/Home.vue');
 const AvatorInfo = () => import('../views/AvatorInfo.vue');
 const TodoList = () => import('../views/TodoList.vue');
 const Choice = () => import('../views/Choice.vue');
+const Calculater=()=>import('../views/Calculator.vue');
 Vue.use(VueRouter);
 
 const routes = [
@@ -27,6 +28,10 @@ const routes = [
   {
     path: '/choice',
     component:Choice
+  },
+  {
+    path: '/calc',
+    component:Calculater
   }
 ];
 

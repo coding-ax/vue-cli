@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="list-button-count">操作列表</div>
-
+    <transition name="list-transition">
       <div class="list-button" v-show="isMenu">
         <div class="list-screen"></div>
         <div class="list-all">
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      
+    </transition>
   </div>
 </template>
 
@@ -90,38 +90,18 @@ export default {
 .list-button-one:hover {
   background-color: #f6f6f6;
 }
-.itemitem-enter-active {
-  animation: pushScreen 5s ;
+.list-transition-enter-active {
+  animation: pushScreen .5s ;
 }
-.itemitem-leave-active{
-  animation: pushScreen 5s reverse;
+.list-transition-leave-active{
+  animation: pushScreen .5s reverse;
 }
 @keyframes pushScreen {
   0%{
-    background-color:aqua ;
+    bottom: -100%;
   }
   100%{
-   background-color:yellow ;
-  }
-}
-
-
-
-.bounce-enter-active {
-  animation:bounceFrame 2.5s;
-}
-.bounce-leave-active {
-  animation: bounceFrame 2.5s reverse;
-}
-@keyframes bounceFrame {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
+    bottom: 0;
   }
 }
 </style>
