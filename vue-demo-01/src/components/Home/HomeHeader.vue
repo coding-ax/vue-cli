@@ -4,7 +4,7 @@
       <div class="home-header-item" @click="menuClick">
         <img src="../../assets/Head/xitong-.svg" alt />
       </div>
-      <div class="home-header-item" @click="routeBack('/home')">
+      <div class="home-header-item" @click="routeHome">
         <img src="../../assets/Head/shouye.svg" alt />
       </div>
       <div class="home-header-item" @click="aboutClick">
@@ -40,6 +40,10 @@
           <img src="../../assets/Head/banana.svg" alt />
           <span>选择困难</span>
         </div>
+         <div class="home-left-box-item-items" @click="routeBack('/choice')">
+          <img src="../../assets/Head/banana.svg" alt />
+          <span>计算器</span>
+        </div>
       </div>
     </transition>
   </div>
@@ -62,6 +66,10 @@ export default {
     },
     routeBack(path) {
       this.$router.replace(path);
+    this.rightStatus=!this.rightStatus;
+    },
+    routeHome(){
+        this.$router.replace('/home');
     }
   }
 };
@@ -75,10 +83,11 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 39px;
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   top: 0;
+
 }
 .home-header-item {
   font-size: 20px;
@@ -123,6 +132,7 @@ export default {
   top: 0;
   bottom: 0;
   right: 0;
+  
 }
 .home-left-box-item {
   background: rgb(0, 0, 0);

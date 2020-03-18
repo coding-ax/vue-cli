@@ -1,7 +1,7 @@
 <template>
   <div id="choice-box">
     <div class="choice-box-item">
-      <p class="choice-title">告别你的所有纠结</p>
+      <p class="choice-title">告别纠结</p>
       <p class="choice-title-two">请点击</p>
       <div class="choice-box-content">
         <div
@@ -12,9 +12,10 @@
           <img :src="item.imgSrc" alt />
           <div class="choice-insert-title">{{item.name}}</div>
         </div>
-        <div class="choice-small-begin" @click="playStart()">
+        <div class="choice-small-begin" @click.prevent="playStart()">
           <img src="../assets/Head/wode-.svg" alt />
           <div class="choice-insert-title">点击开始</div>
+            <div class="choice-screen" v-show="isPlaying" @click.stop=""></div>
         </div>
       </div>
     </div>
@@ -81,6 +82,7 @@ export default {
           imgSrc: require("../assets/Head/orange.svg")
         }
       ],
+      isPlaying: false,
       currentIndex: 1,
       speed: 150,
       target: 0,
@@ -92,7 +94,7 @@ export default {
       this.currentIndex = 1;
       this.speed = 150;
       this.target = parseInt(Math.random() * 8 + 1, 10);
-
+      this.isPlaying=true;
       var awartCount = 1;
       console.log(this.target);
       //   var that=this;
@@ -116,6 +118,7 @@ export default {
           }
         }, this.speed);
       }).then(time => {
+        this.isPlaying=false;
         clearInterval(time);
         this.currentIndex = this.target;
         console.log(this.currentIndex);
@@ -133,6 +136,14 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.choice-screen {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 39px;
+  display: block;
 }
 .choice-title {
   color: red;
@@ -222,7 +233,7 @@ export default {
 .choice-small-begin {
   border: 1px solid #f6f6f6;
   position: absolute;
-  right:33.3%;
+  right: 33.3%;
   left: 33.3%;
   top: 33.3%;
   bottom: 33.3%;

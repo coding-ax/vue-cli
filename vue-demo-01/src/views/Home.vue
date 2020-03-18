@@ -1,6 +1,5 @@
 <template>
   <div id="head">
-
     <home-avator></home-avator>
     <hr class="home-hr"/>
     <home-item></home-item>

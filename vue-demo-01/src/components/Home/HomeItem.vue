@@ -14,7 +14,7 @@
         <span>选择困难</span>
       </div>
     </div>
-    <div class="three-item">
+    <!-- <div class="three-item">
       <div class="home-item-item">
         <img src="../../assets/Head/biaodan.svg" alt />
         <span>备忘录</span>
@@ -41,7 +41,7 @@
         <img src="../../assets/Head/biaodan.svg" alt />
         <span>备忘录</span>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

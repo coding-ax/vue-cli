@@ -46,11 +46,20 @@ export default {
   },
   methods: {
     addString(ans) {
+      if(this.wait){
+        this.currentShowString="";
+        this.wait=false;
+      }
       this.currentString += ans;
       this.currentShowString += ans;
       this.previewAns = eval(this.currentString);
     },
     addSign(sign) {
+      if(this.wait){
+        this.currentString=this.currentShowString;
+        this.previewAns=eval(this.currentString);
+        this.wait=false;
+      }
       this.currentString += sign;
       if (sign == "*") {
         sign = "X";
@@ -64,6 +73,7 @@ export default {
     finalAns() {
       this.currentShowString = eval(this.currentString);
       this.currentString=this.previewAns='';
+      this.wait=true;
     },
     reset() {
       this.currentShowString = "";
@@ -71,7 +81,9 @@ export default {
       this.currentString = "";
     },
     deleteOne() {
-
+     this.currentString=this.currentString.substr(0,this.currentString.length-1);
+     this.currentShowString=this.currentShowString.substr(0,this.currentShowString.length-1);
+     this.previewAns=eval(this.currentString);
     }
   }
 };
