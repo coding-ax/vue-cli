@@ -50,8 +50,7 @@
       </transition>
     </div>
 
- 
-      <alertBox @alertans="alertAns" :isAlert="isAlert" :alertContent="alertContent" />
+    <alertBox @alertans="alertAns" :isAlert="isAlert" :alertContent="alertContent" />
   </div>
 </template>
 
@@ -112,6 +111,7 @@ export default {
     deleteItem(type) {
       this.isAlert = true;
       this.type = type;
+      this.showOperation();
       switch (this.type) {
         case 1: {
           this.alertContent = {
@@ -318,5 +318,4 @@ export default {
     bottom: 0;
   }
 }
-
 </style>
