@@ -17,13 +17,14 @@ export default {
     return {
       dateDate: "27",
       dateMonth: "三月",
-      timeString: "早上好！"
+      timeString: ""
     };
   },
-  created() {
+  mounted() {
     let date = new Date().getMonth() + 1;
     let time = new Date().getDate();
     let hour = new Date().getHours();
+    console.log(hour);
     switch (hour) {
       case hour < 11 && hour >= 4:
         this.timeString = "早上好！";
@@ -31,7 +32,7 @@ export default {
         this.timeString = "中午好！";
       case hour < 18 && hour >= 14:
         this.timeString = "晚上好！";
-      case hour < 4 && hour >=18 :
+      case hour < 4 && hour >= 18:
         this.timeString = "凌晨";
     }
     setTimeout(() => {
@@ -48,6 +49,7 @@ export default {
   right: 0;
   top: 0;
   height: 50px;
+  background-color:#f6f6f6 ;
 }
 .header-box {
   display: flex;
@@ -75,12 +77,5 @@ export default {
   font-size: 30px;
   margin-left: 15px;
 }
-.head-sayhello-enter-active,
-.head-sayhello-leave-active {
-  transition: opacity 5s;
-}
-.head-sayhello-enter,
-.head-sayhello-leave-to {
-  opacity: 0;
-}
+
 </style>

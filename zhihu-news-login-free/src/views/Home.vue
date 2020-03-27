@@ -1,36 +1,75 @@
 <template>
   <div id="home">
-    <headStatus></headStatus>
+    <div class="head">
+      <headStatus></headStatus>
+    </div>
+
     <div class="head-spider-box">
-      <spider :banners="imgArray"></spider>
+      <spider :banners="banners"></spider>
+    </div>
+    <div class="head-item-box">
+      <div class="head-item" v-for="story in stories" :key="story.id">
+        <head-item :item="story"></head-item>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 import headStatus from "../components/HeadStatus";
 import spider from "../components/spider";
+import headItem from "../components/headItem";
 export default {
   components: {
     headStatus,
-    spider
+    spider,
+    headItem
   },
   data() {
     return {
-      imgArray: [],
-      newData: {}
+      banners: [],
+      topStories: null,
+      stories: null,
+      storiesArray: []
     };
   },
   computed: {},
   created() {
-    console.log("create");
-    fetch("http://47.102.212.191:3000/")
-      .then(res => res.json())
-      .then(res => {
-        this.newData = res;
-        console.log(res);
-        console.log(this.newData);
+    axios.get("http://47.102.212.191:3000/").then(res => {
+      // this.newData=res.data;
+      console.log(res.data.data);
+      this.topStories = res.data.data.top_stories;
+      console.log(this.topStories);
+      this.stories = res.data.data.stories;
+      console.log(this.stories);
+      for (let i = 0; i < this.topStories.length; i++) {
+        // console.log(this.topStories[i].image);
+        this.banners.push(this.topStories[i]);
+      }
+      for (let i = 0; i < this.Stories.length; i++) {
+        // console.log(this.topStories[i].image);
+        this.storiesArray.push(this.topStories[i]);
+      }
+
+      console.log(this.banners);
+    });
+  },
+  methods: {
+    fetchData() {
+      axios.get("http://47.102.212.191:3000/").then(res => {
+        // this.newData=res.data;
+        console.log(res.data.data);
+        this.topStories = res.data.data.top_stories;
+        console.log(this.topStories);
+        this.stories = res.data.data.stories;
+        console.log(this.stories);
+        for (let i = 0; i < this.topStories.length; i++) {
+          this.banners.push(this.topStories[i].image);
+        }
       });
+    }
   }
 };
 </script>
@@ -38,5 +77,12 @@ export default {
 <style>
 .head-spider-box {
   margin-top: 60px;
+}
+.head{
+  z-index: 9999;
+}
+#home {
+  display: flex;
+  flex-direction: column;
 }
 </style>
