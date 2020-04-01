@@ -81,7 +81,6 @@ export default {
   left: 0;
   right: 0;
   top: 0;
-  z-index: 222;
 }
 .home-header-box {
   background-color: rgb(252, 1, 18);

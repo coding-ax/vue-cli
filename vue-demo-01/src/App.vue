@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-  <home-header></home-header>
-  <router-view></router-view>
+    <div class="app-home">
+      <home-header></home-header>
+    </div>
+    <div class="app-router-view">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -11,13 +15,18 @@ export default {
   components: {
     HomeHeader
   }
-}
+};
 </script>
 <style>
-body{
+body {
   margin: 0;
   padding: 0;
-  font-family:微软雅黑;
+  font-family: 微软雅黑;
 }
-
+.app-home {
+  z-index:2;
+}
+.app-router-view{
+  z-index: 1;
+}
 </style>

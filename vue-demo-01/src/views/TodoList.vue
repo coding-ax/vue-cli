@@ -244,7 +244,7 @@ export default {
 
 .list-button-count {
   background-color: red;
-  position: fixed;
+  position: absolute;/*flag*/
   left: 15px;
   right: 15px;
   font-size: 20px;
@@ -259,7 +259,7 @@ export default {
   border-radius: 3px;
 }
 .list-screen {
-  position: fixed;
+  position: absolute;/*flag*/;
   left: 0;
   right: 0;
   bottom: 0;
@@ -269,7 +269,7 @@ export default {
 .list-all {
   background-color: white;
   border-bottom: #666666 1px solid;
-  position: fixed;
+  position: absolute;/*flag*/;
   left: 0;
   right: 0;
   bottom: 0;
