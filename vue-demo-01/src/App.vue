@@ -1,11 +1,7 @@
 <template>
   <div id="app">
-    <div class="app-home">
-      <home-header></home-header>
-    </div>
-    <div class="app-router-view">
-      <router-view></router-view>
-    </div>
+    <home-header class="app-home"></home-header>
+    <router-view class="app-router-view"></router-view>
   </div>
 </template>
 
@@ -24,9 +20,9 @@ body {
   font-family: 微软雅黑;
 }
 .app-home {
-  z-index:2;
-}
-.app-router-view{
   z-index: 1;
+}
+.app-router-view {
+  z-index:2;
 }
 </style>

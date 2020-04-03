@@ -97,7 +97,6 @@ export default {
   flex-direction: column; */
   text-align: center;
   position: absolute;
-  z-index: 0;
   bottom: 0;
 }
 .calculator-screen {
