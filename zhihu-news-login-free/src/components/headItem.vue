@@ -19,7 +19,6 @@ export default {
   props: ["item"],
   data() {
     return {
-      item: []
     };
   }
 };

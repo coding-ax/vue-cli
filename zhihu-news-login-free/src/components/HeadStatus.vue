@@ -15,8 +15,8 @@
 export default {
   data() {
     return {
-      dateDate: "27",
-      dateMonth: "三月",
+      dateDate: "",
+      dateMonth: "",
       timeString: ""
     };
   },
@@ -24,16 +24,21 @@ export default {
     let date = new Date().getMonth() + 1;
     let time = new Date().getDate();
     let hour = new Date().getHours();
-    console.log(hour);
-    switch (hour) {
-      case hour < 11 && hour >= 4:
-        this.timeString = "早上好！";
-      case hour < 14 && hour >= 11:
-        this.timeString = "中午好！";
-      case hour < 18 && hour >= 14:
-        this.timeString = "晚上好！";
-      case hour < 4 && hour >= 18:
-        this.timeString = "凌晨";
+
+    console.log(hour, date, time);
+    this.dateDate = time;
+    this.dateMonth = date;
+
+    if (hour < 11 && hour >= 4) {
+      this.timeString = "早上好！";
+    } else if (hour < 14 && hour >= 11) {
+      this.timeString = "中午好！";
+    } else if (hour < 18 && hour >= 14) {
+      this.timeString = "下午好！";
+    } else if (hour >= 18) {
+      this.timeString = "晚上好";
+    }else if(hour<4){
+      this.timeString="凌晨！"
     }
     setTimeout(() => {
       this.timeString = "知乎日报（高仿）";
@@ -49,7 +54,7 @@ export default {
   right: 0;
   top: 0;
   height: 50px;
-  background-color:#f6f6f6 ;
+  background-color: #f6f6f6;
 }
 .header-box {
   display: flex;
@@ -77,5 +82,4 @@ export default {
   font-size: 30px;
   margin-left: 15px;
 }
-
 </style>

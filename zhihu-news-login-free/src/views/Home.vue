@@ -30,8 +30,8 @@ export default {
   data() {
     return {
       banners: [],
-      topStories: null,
-      stories: null,
+      topStories: [],
+      stories: [],
       storiesArray: []
     };
   },
@@ -39,20 +39,13 @@ export default {
   created() {
     axios.get("http://47.102.212.191:3000/").then(res => {
       // this.newData=res.data;
-      console.log(res.data.data);
+      // console.log(res.data.data);
       this.topStories = res.data.data.top_stories;
-      console.log(this.topStories);
+      // console.log(this.topStories);
       this.stories = res.data.data.stories;
-      console.log(this.stories);
-      for (let i = 0; i < this.topStories.length; i++) {
-        // console.log(this.topStories[i].image);
-        this.banners.push(this.topStories[i]);
-      }
-      for (let i = 0; i < this.Stories.length; i++) {
-        // console.log(this.topStories[i].image);
-        this.storiesArray.push(this.topStories[i]);
-      }
-
+      // console.log(this.stories);
+      this.banners.push(...this.topStories);
+      this.storiesArray.push(...this.topStories);
       console.log(this.banners);
     });
   },
@@ -78,11 +71,12 @@ export default {
 .head-spider-box {
   margin-top: 60px;
 }
-.head{
+.head {
   z-index: 9999;
 }
 #home {
   display: flex;
   flex-direction: column;
 }
+
 </style>
