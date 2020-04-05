@@ -6,8 +6,8 @@
     <home-swiper :banners="banners"></home-swiper>
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
-    <tab-control class="tab-control" :titles="titles"></tab-control>
-    <goods-list :goods="goods['pop'].List"></goods-list>
+    <tab-control class="tab-control" :titles="titles" @tabClick="tabClick"></tab-control>
+    <goods-list :goods="showGoods"></goods-list>
   </div>
 </template>
 
@@ -52,8 +52,14 @@ export default {
           page: 0,
           List: []
         }
-      }
+      },
+      currentType: "pop"
     };
+  },
+  computed: {
+    showGoods() {
+      return this.goods[this.currentType].List;
+    }
   },
   created() {
     //使用引入的网络请求函数
@@ -62,25 +68,38 @@ export default {
     this.getHomeGoods("pop");
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
-
-    this.getHomeGoods("pop");
-    this.getHomeGoods("new");
-    this.getHomeGoods("sell");
   },
   methods: {
+    /**
+     * 事件监听相关方法
+     */
+    tabClick(index) {
+      switch (index) {
+        case 0:
+          this.currentType = "pop";
+          break;
+        case 1:
+          this.currentType = "new";
+          break;
+        case 2:
+          this.currentType = "sell";
+          break;
+      }
+    },
+    /**网络请求相关方法 */
     getHomeMultidata() {
       getHomeMultidata().then(res => {
-        console.log(res);
+        // console.log(res);
         this.banners = res.data.data.banner.list;
         this.recommends = res.data.data.recommend.list;
       });
     },
     getHomeGoods(type) {
-      console.log(this.goods[type].page);
+      // console.log(this.goods[type].page);
       const page = this.goods[type].page + 1;
-      console.log(page);
+      // console.log(page);
       getHomeGoods(type, page).then(res => {
-        console.log(res);
+        // console.log(res);
         this.goods[type].List.push(...res.data.data.list);
         this.goods[type].page++;
       });

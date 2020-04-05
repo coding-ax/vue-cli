@@ -30,6 +30,9 @@ export default {
   methods: {
       itemClick(index){
           this.currentIndex=index;
+          //告知父组件已经切换
+          // console.log(index);
+          this.$emit('tabClick',index);
       }
   }
 };
