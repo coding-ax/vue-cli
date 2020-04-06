@@ -1,6 +1,6 @@
 <template>
   <div id="category">
-    <div class="wrapper">
+    <div class="wrapper" ref="wrapper">
       <ul class="content">
         <li>分类列表1</li>
         <li>分类列表2</li>
@@ -511,13 +511,19 @@
 import BScroll from "better-scroll";
 export default {
   name: "Category",
-  data () {
+  data() {
     return {
-      bs:null 
-    }
+      scroll: null
+    };
   },
   mounted() {
-   this.bs= new BScroll(document.getElementsByClassName("wrapper")[0], {});
+    this.scroll = new BScroll(document.querySelector(".wrapper"), {
+      //切记此处为驼峰
+      probeType: 3
+    });
+    this.scroll.on("scroll", postion => {
+      console.log(postion);
+    });
   }
 };
 </script>
@@ -526,5 +532,6 @@ export default {
 .wrapper {
   background-color: red;
   height: 180px;
+  overflow: hidden;
 }
 </style>
