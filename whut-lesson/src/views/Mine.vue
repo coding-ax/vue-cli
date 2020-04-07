@@ -23,9 +23,7 @@
        1.前往'我的'输入正确密码与学号
        2.输入后点击右上角刷新
       （没有动画效果，请耐心等待)
-       3.感谢陈杰哥哥提供接口
-       4.请每周主动更新一次（右上角）
-       5.copyright@AX 2020-
+       3.请每周主动更新一次（右上角）
       </pre>
     </div>
   </div>
@@ -46,6 +44,7 @@ export default {
       this.$store.state.un = this.un;
       this.$store.state.pwd = this.pwd;
       console.log(this.un, this.pwd);
+      alert("已保存")
     },
     reset() {
       this.un = "";

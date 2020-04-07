@@ -2,7 +2,7 @@
   <div id="app">
     <nav-bar>
       <span slot="center">课表</span>
-      <i class="icon-refresh" slot="right" @click="refresh"></i>
+      <i :class="{rotate:isClick}" class="icon-refresh" slot="right" @click="refresh"></i>
     </nav-bar>
     <home-tab-bar></home-tab-bar>
   </div>
@@ -15,15 +15,21 @@ import HomeTabBar from "./components/HomeTabBar";
 export default {
   components: {
     NavBar,
-    HomeTabBar,
+    HomeTabBar
   },
   data() {
-    return {};
+    return {
+      isClick: false
+    };
   },
   methods: {
     refresh() {
-      console.log("cick");
+      this.isClick = true;
       this.$store.commit("upRefresh", true);
+      // alert("已点击，请马上关闭窗口耐心等待");
+      setTimeout(() => {
+        this.isClick = false;
+      }, 5000);
     }
   },
   mounted() {}
@@ -42,7 +48,15 @@ export default {
 </script>
 <style>
 @import "./assets/css/base.css";
+@keyframes turnZ {
+  0% {
+    transform: rotateZ(0deg);
+  }
 
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
 i {
   display: inline-block;
   height: 1em;
@@ -52,8 +66,13 @@ i {
   text-indent: -9999px;
   vertical-align: middle;
   position: relative;
+  
 }
-
+.rotate {
+  animation-name: turnZ;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
 i::before,
 i::after {
   content: "";
