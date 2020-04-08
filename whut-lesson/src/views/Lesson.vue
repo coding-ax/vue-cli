@@ -94,7 +94,4 @@ export default {
   width: 100%;
   padding: 3px;
 }
-/**0121810880322	ykh20001229
- */
-/** 0121810870217 AX.xgp000908 */
 </style>
