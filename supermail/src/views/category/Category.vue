@@ -519,11 +519,16 @@ export default {
   mounted() {
     this.scroll = new BScroll(document.querySelector(".wrapper"), {
       //切记此处为驼峰
-      probeType: 3
+      probeType: 3,
+      pullUpLoad:true,
+      click:true
     });
     this.scroll.on("scroll", postion => {
-      console.log(postion);
+      // console.log(postion);
     });
+    this.scroll.on("pullingUp",()=>{
+      console.log("上拉加载更多");
+    })
   }
 };
 </script>
