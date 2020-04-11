@@ -3,11 +3,23 @@
     <nav-bar class="home-nav">
       <div slot="center">购物街</div>
     </nav-bar>
-    <home-swiper :banners="banners"></home-swiper>
-    <recommend-view :recommends="recommends"></recommend-view>
-    <feature-view></feature-view>
-    <tab-control class="tab-control" :titles="titles" @tabClick="tabClick"></tab-control>
-    <goods-list :goods="showGoods"></goods-list>
+    <!-- 可以通过ref访问组件内部的属性 -->
+    <scroll
+      class="content"
+      ref="scroll"
+      :probe-type="3"
+      @scroll="contentScroll"
+      :pull-up-load="true"
+      @pullingUp="loadMore"
+    >
+      <home-swiper :banners="banners"></home-swiper>
+      <recommend-view :recommends="recommends"></recommend-view>
+      <feature-view></feature-view>
+      <tab-control class="tab-control" :titles="titles" @tabClick="tabClick"></tab-control>
+      <goods-list :goods="showGoods"></goods-list>
+    </scroll>
+    <!-- 组件无法监听点击单纯的click事件，需要使用click.native 当我们需要对组件进行原生事件监听的时候，必须加上.native属性修饰符-->
+    <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 
@@ -15,7 +27,10 @@
 //components:
 import NavBar from "../../components/common/navbar/NavBar";
 import TabControl from "../../components/common/tabControl/TabControl";
+import Scroll from "../../components/common/scroll/Scroll";
+
 import GoodsList from "../../components/content/goods/GoodsList";
+import BackTop from "../../components/content/backTop/BackTop";
 
 import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
@@ -31,7 +46,9 @@ export default {
     RecommendView,
     FeatureView,
     TabControl,
-    GoodsList
+    GoodsList,
+    Scroll,
+    BackTop
   },
   data() {
     return {
@@ -53,7 +70,8 @@ export default {
           List: []
         }
       },
-      currentType: "pop"
+      currentType: "pop",
+      isShowBackTop: false
     };
   },
   computed: {
@@ -102,15 +120,32 @@ export default {
         // console.log(res);
         this.goods[type].List.push(...res.data.data.list);
         this.goods[type].page++;
+
+        this.$refs.scroll.finishPullUp();
       });
+    },
+
+    backClick() {
+      this.$refs.scroll.scrollTo(0, 0);
+    },
+
+    contentScroll(position) {
+      this.isShowBackTop = -position.y > 1000 ? true : false;
+    },
+
+    loadMore() {
+      console.log("上拉加载");
+      this.getHomeGoods(this.currentType);
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 #home {
   padding-top: 44px;
+  height: 100vh; /* viewport height */
+  position: relative;
 }
 .home-nav {
   /* background-color:#ff8198; */
@@ -126,5 +161,20 @@ export default {
 .tab-control {
   position: sticky;
   top: 44px;
+}
+/* .content{
+  height: calc(100% - 93px);
+  overflow: hidden;
+  margin-top: 44px;
+} */
+/*calc() 需要使用空格隔开操作数 */
+/**方法2：使用定位 */
+.content {
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
 }
 </style>

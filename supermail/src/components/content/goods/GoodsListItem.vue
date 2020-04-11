@@ -22,8 +22,7 @@ export default {
   }
 };
 </script>
-
-<style>
+<style scoped>
 .goods-list-item {
   text-align: center;
 }
