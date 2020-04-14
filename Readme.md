@@ -9,10 +9,11 @@
 5.vuex学习完毕  
 6.axios有过接触  
 7.bilibili：2019年最全最新Vue、Vuejs教程，从入门到精通 。  
+8.简单看了一遍vue-cli vuex vue-router官方文档  
+9.一个纯前端的小应用   
+代码在vue-cli/vue-demo-01下当前示例：https://xgpax.top/vuedemo/test （谷歌，火狐请使用手机模式预览)  
 - 正在进行的学习：  
 1.当前暂时告一段落。  
 - 预设学习路径：  
-1.一个纯前端的小应用   
-代码在vue-cli/vue-demo-01下当前示例：https://xgpax.top/vuedemo/test （谷歌，火狐请使用手机模式预览)  
-2.抽时间认真看一遍vue-cli vuex vue-router官方文档  
-3.抽机会看书  
+1.b站视频继续跟着做项目  
+2.完成B站黑马 

@@ -121,6 +121,9 @@ export default {
         this.goods[type].List.push(...res.data.data.list);
         this.goods[type].page++;
 
+
+
+
         this.$refs.scroll.finishPullUp();
       });
     },
