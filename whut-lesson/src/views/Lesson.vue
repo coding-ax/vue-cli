@@ -1,7 +1,7 @@
 <template>
   <div id="box">
     <div class="week-box-large">
-      <week-box :date="date"></week-box>
+      <week-box></week-box>
       <lesson-date v-if="lesson" :lesson="lesson" :changeFlag="changeFlag" @changeOver="changeOver"></lesson-date>
     </div>
   </div>
@@ -52,8 +52,8 @@ export default {
       }
       else{
         console.log("hhh")
-        this.date=multidata.date;
-        this.lesson=multidata.clas;
+        // this.date=multidata.date;
+        this.lesson=multidata.data;
         this.changeFlag=true;
       }
     }
@@ -64,19 +64,22 @@ export default {
       // fetch(
       //   `http://47.102.197.109:8888/api/course?un=${this.$store.state.un}&pwd=${this.$store.state.pwd}`
       // )
+      // fetch("http://120.78.224.81:8888/api/lesson?username=0121810880322&password=ykh20001229").then(res=>res.json()).then(res=>{
+      //   console.log(res);
+      // })
+      console.log(this.$store.state.un,this.$store.state.pwd)
         getLesson(this.$store.state.un,this.$store.state.pwd)
         .then(res => {
           console.log("fetched");
           console.log(res);
-          if (res.data.date.length == 0) {
-            alert("密码错误");
-          }
-          this.date = res.data.date;
-          this.lesson = res.data.clas;
+          // this.date = res.data.date;
+          this.lesson = res.data.data;
           this.changeFlag = true;
           console.log("lesson:", this.lesson);
           window.localStorage.setItem('multidata',JSON.stringify(res.data));
-        });
+        }).catch(res=>{
+           alert("密码错误");
+        })
     },
     changeOver() {
       this.changeFlag = false;

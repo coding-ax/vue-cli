@@ -2,10 +2,10 @@ import { request } from './request'
 
 export function getLesson(un,pwd) {
     return request({
-        url: '/course',
+        url: '/lesson',
         params: {
-            un,
-            pwd
+            username:un,
+            password:pwd
         }
     })
 }

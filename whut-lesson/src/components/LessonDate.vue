@@ -64,14 +64,14 @@ export default {
       for (let i = 0; i < 35; i++) {
         let flag = false;
         for (let les of this.lesson) {
-          if (les.cid === i + 1 && (les.state === 1 || les.state === 2)) {
+          if (les.count=== i + 1) {
             this.list.push({
               show: true,
-              cid: les.cid,
-              state: les.state,
-              name: les.name,
-              location: les.location,
-              week: les.week,
+              cid: les.count,
+              state: 1,
+              name: les.class_name,
+              location: les.class_where,
+              week: les.class_time,
               len: les.len
             });
             if (les.cid > i + 1) {
@@ -90,7 +90,7 @@ export default {
             location: "",
             week: "",
             today: false,
-            len: 0
+            len: 3
           });
         }
       }
